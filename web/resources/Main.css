@@ -1,0 +1,32 @@
+
+.home_header{
+    width: 100%;
+    background: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 0px 20px 0px;
+
+}
+.PointTable{
+    align-content: center;
+    width: 100%;
+}
+#head{
+    margin-top:5%;
+    border-top: solid black 5px;
+}
+#bottom{
+    border-bottom: solid black 5px;
+}
+.message{
+    color: red;
+    font-size: 15px;
+}
+#clock{
+    width: 100%;
+    background: #0a0a0a;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 0px 20px 0px;
+    color: white;
+}

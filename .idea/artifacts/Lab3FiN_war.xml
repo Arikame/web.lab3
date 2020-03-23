@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Lab3FiN:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/Lab3FiN_war</output-path>
+    <root id="archive" name="Lab3FiN_war.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Lab3FiN" />
+          <element id="jpa-descriptors" facet="Lab3FiN/jpa/JPA" />
+          <element id="module-source" name="Lab3FiN" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="PrimeFaces-6.1" />
+          <element id="library" level="project" name="JPA 2.0-2.0" />
+          <element id="library" level="application" name="hibernate" />
+          <element id="library" level="application" name="ojdbc6" />
+          <element id="library" level="application" name="javax.faces" />
+          <element id="library" level="application" name="antlr-2.7.7" />
+          <element id="library" level="application" name="jsf-api-2.0" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Lab3FiN/web/Web" />
+    </root>
+  </artifact>
+</component>

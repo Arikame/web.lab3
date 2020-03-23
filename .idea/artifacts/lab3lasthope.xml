@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="lab3lasthope">
+    <output-path>$PROJECT_DIR$/out/artifacts/lab3lasthope</output-path>
+    <root id="archive" name="lab3lasthope.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="antlr-2.7.7" />
+          <element id="library" level="application" name="hibernate" />
+          <element id="library" level="project" name="Java EE 6-Java EE 6" />
+          <element id="library" level="application" name="javax.faces" />
+          <element id="library" level="project" name="JPA 2.0-2.0" />
+          <element id="library" level="application" name="jsf-api-2.0" />
+          <element id="library" level="application" name="ojdbc6" />
+          <element id="library" level="project" name="PrimeFaces-6.1" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="module-output" name="Lab3FiN" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Lab3FiN/web/Web" />
+    </root>
+  </artifact>
+</component>

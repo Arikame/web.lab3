@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <f:view>
+        <div class="home_header" style="padding: 0px 0px 20px 0px;">
+            <h:message for="variableX" class="message" />
+            <h:message for="variableY" class="message" />
+            <div id="point_form" align="center">
+                <h:form id="PointForm">
+                    <!--поле, которое хранит объединненные данные из booleancheckbox в виде строки-->
+                    <h:inputHidden id="variableX" name="variableX" required="true" styleClass="inputX" label="X"  requiredMessage="Выберите значение X "/>
+                    X:
+                    <!--функция manyXtoOne обрабатывает нажатие чекбокса
+                        если что-то изменилось, то изметинся и значение строки в VariableX-->
+                    <h:selectBooleanCheckbox id="X_3" label="X" onchange="manyXtoOne()"> -3
+                    </h:selectBooleanCheckbox>
+                    <h:selectBooleanCheckbox id="X_2" label="X" onchange="manyXtoOne()"> -2
+                    </h:selectBooleanCheckbox>
+                    <h:selectBooleanCheckbox id="X_1" label="X" onchange="manyXtoOne()"> -1
+                    </h:selectBooleanCheckbox>
+                    <h:selectBooleanCheckbox id="X0" label="X" onchange="manyXtoOne()"> 0
+                    </h:selectBooleanCheckbox>
+                    <h:selectBooleanCheckbox id="X1" label="X" onchange="manyXtoOne()"> 1
+                    </h:selectBooleanCheckbox>
+                    <h:selectBooleanCheckbox id="X2" label="X" onchange="manyXtoOne()"> 2
+                    </h:selectBooleanCheckbox>
+                    <h:selectBooleanCheckbox id="X3" label="X" onchange="manyXtoOne()"> 3
+                    </h:selectBooleanCheckbox>
+                    <h:selectBooleanCheckbox id="X4" label="X" onchange="manyXtoOne()"> 4
+                    </h:selectBooleanCheckbox>
+                    <h:selectBooleanCheckbox id="X5" label="X" onchange="manyXtoOne()"> 5
+                    </h:selectBooleanCheckbox>
+                    <br/>
+                    Y:
+                    <h:inputText id="variableY" name="variableY" required="true" styleClass="inputY" maxlength="8" label="Y"  requiredMessage=" Введите значение Y">
+                        <!--валидатор для Y-->
+                        <f:validator validatorId = "ValidateY"/>
+                    </h:inputText>
+                    <!--при изменении R canvas перерисовывается и его значение присваивается объекту Result-->
+                    R:
+                    <h:selectOneMenu id="variableR" name="variableR" label="R" onchange="redraw()" value="#{Result.r}">
+                        <f:selectItem itemValue = "1" itemLabel = "1" />
+                        <f:selectItem itemValue = "2" itemLabel = "2" />
+                        <f:selectItem itemValue = "3" itemLabel = "3" />
+                        <f:selectItem itemValue = "4" itemLabel = "4" />
+                        <f:selectItem itemValue = "5" itemLabel = "5" />
+                    </h:selectOneMenu>
+                    <br/>
+                    <h:commandButton type="submit"
+                                     value="Проверить"
+                                     action="#{PointBean.addPagePoint}"
+                                     styleClass="link-go"/>
+                    <!--обновялем содержимое TablePoints-->
+                    <p:remoteCommand name="needList" action="#{PointBean.getList()}" partialSubmit="true" process="@this" update="TablePoints"/>
+                    <p:remoteCommand name="sendClick" action="#{PointBean.addClickPoint()}" partialSubmit="true" process="@this" update="TablePoints"/>
+                </h:form>
+            </div>
+        </div>
+        <p:outputPanel>
+            <div align="center">
+                <canvas id="canvas" style="background-color:#fff;" width="400" height="300"/>
+                <br/>
+                <p id="movelog">X:  / Y:  / R: </p>
+            </div>
+        </p:outputPanel>
+
+        <div class="home_header" id="bottom" align="center">
+            Таблица результатов для пользователя #{Userses.name}. <a href="unlogin">Разлогиниться?</a>
+            <!--Выводим результаты проверки-->
+            <h:dataTable value="#{PointBean.tableList}" var="res"
+                         styleClass="PointTable"
+                         rules="all" id="TablePoints">
+                <h:column>
+                    <f:facet name="header">X</f:facet>
+                    #{res.point.x}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Y </f:facet>
+                    #{res.point.y}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">R</f:facet>
+                    #{res.r}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Результат</f:facet>
+                    #{res.StringShot()}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Время</f:facet>
+                    #{res.StringDate()}
+                </h:column>
+            </h:dataTable>
+        </div>
+    </f:view>
+</h:body>
+<link rel="stylesheet" type="text/css" href="resources/Main.css"/>
+<script type="text/javascript" src="points_page.js" />
+</html>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<link rel="stylesheet" type="text/css" href="resources/Main.css" />
+<body>
+<div class="home_header" id="head"><div style="float: left;padding-left: 25%;"> P3213</div> Лескова Александра Константиновна  <div style="float: right;padding-right: 20%;">Вариант 526852</div></div>
+<div id="clock"></div>
+<div class="home_header" id="bottom">
+    <h:form id="CreateLoggin">
+        <!-->присваиваем нашему текущему пользователю значение name-->
+        Ваш Никнейм: <h:inputText id="name" name="name" value="#{Userses.name}" />
+        <!--переходим к обработке никнейма-->
+        <h:commandButton value="Переход" action = "#{LoggIn.loggin}" />
+    </h:form>
+</div>
+<!--скрипт для обработки времени-->
+<script type="text/javascript" src="resources/home.js"></script>
+</body>
+
+</html>
